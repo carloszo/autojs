@@ -1,0 +1,2 @@
+waitForActivity("com.taobao.tao.TBMainActivity")
+log("淘宝已经登陆")

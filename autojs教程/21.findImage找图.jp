@@ -1,0 +1,7 @@
+if(!requestScreenCapture()){
+    toastLog("截图权限未开启")
+    exit()
+}
+var img =  images.captureScreen()
+var close = images.read("/sdcard/脚本/close1.jpg")
+log(findImage(img,close))
