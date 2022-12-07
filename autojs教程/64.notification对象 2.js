@@ -1,0 +1,10 @@
+events.observeNotification()
+events.onNotification((notification)=>{
+    log(notification.number)
+    log(new Date(notification.when))
+    log(notification.getPackageName())
+    log(notification.getText())
+    log(notification.getTitle())
+    log(notification.click())
+    log(notification.delete())
+})

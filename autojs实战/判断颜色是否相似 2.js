@@ -1,0 +1,1 @@
+log(colors.isSimilar('#000000','#000001'))
