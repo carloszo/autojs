@@ -1,13 +1,14 @@
 
 // var w = floaty.rawWindow(
 //     <card cardBackgroundColor="#99000000" cardCornerRadius="0">
-//         <horizontal w="250" h="35" paddingLeft="10" paddingRight="10" >
+//         <horizontal w="auto" h="40" paddingLeft="10" paddingRight="10" >
 //             <text id="log" size="12dp" color="white" w="180" h="35" layout_gravity="center" gravity="center||left">脚本启动中</text>
 //         </horizontal>
 //     </card>
 // );
-// w.setSize(-1,-1)
+// // w.setSize(-1,-1)
 // w.setTouchable(false)
+// w.setPosition(100, 100)
 // // ui.run(() => {
 // //     w.setPosition(100, 100)
 // // })
@@ -1101,11 +1102,14 @@ function adTask(){
             }
             log(`当前共有${jinbiSum}金币，约${(jinbiSum/10000).toFixed(2)}元`)
             sleep(2000)
+            // log(123)
             var 宝箱倒计时 = textMatches(/\d{2}分\d{2}秒/).findOnce()
+            
             var imgUrl_5mins = "/sdcard/脚本/taskImg1.jpg"
             var imgUrl_10mins = "/sdcard/脚本/taskImg2.jpg"
             var point = 找图(imgUrl_5mins)
             point = !point?找图(imgUrl_10mins):point
+            log(point)
             if(宝箱倒计时){
                 宝箱倒计时 = Number(宝箱倒计时.text().slice(0,2))
             }

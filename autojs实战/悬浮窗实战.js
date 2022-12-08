@@ -1,4 +1,4 @@
-var w = floaty.window(
+var w = floaty.rawWindow(
     <frame id="background" bg="#99611919" h="auto" w="200">
         <vertical w="*" h="*">
             <vertical w="*" h='20' gravity='top'>
@@ -72,7 +72,63 @@ var w = floaty.window(
     </frame>
 );
 w.setPosition(160,300)
+
+w.background.setOnTouchListener((view,event)=>{
+    switch(event.getAction()){ 
+        case event.ACTION_DOWN:
+            x = event.getRawX()
+            y = event.getRawY()
+            aw = w.getWidth()
+            ah = w.getHeight()
+            windowX = w.getX()
+            windowY = w.getY()
+            downTime = new Date().getTime()
+            return true
+        case event.ACTION_MOVE:
+            fcx = windowX + (event.getRawX()-x)
+            fcy = windowY + (event.getRawY()-y)
+            // w.setPosition(fcx,fcy)
+            move()
+            return true
+        case event.ACTION_UP:
+            return true
+
+    }
+
+    
+})
+// 退出
 w.exit.click(()=>{
     exit()
 })
+
+// 最小化/最大化
+w.smallest.click(()=>{
+    if(w.smallest.text()==='最小化'){
+        w.smallest.setText("最大化")
+        w.setSize(250,225)
+    }else if(w.smallest.text()==='最大化'){
+        w.smallest.setText("最小化")
+        w.setSize(400,500)
+    
+    }  
+})
+
+w.bounds.click(()=>{
+    setClip(w.bounds.text())
+})
+w.color.click(()=>{
+    setClip(w.color.text())
+})
+w.argb.click(()=>{
+    setClip(w.argb.text())
+})
+w.hsl.click(()=>{
+    setClip(w.hsl.text())
+})
+
+function move(){
+    w.setPosition(fcx,fcy)
+    w.bounds.setText(w.getX()+','+w.getY())   
+}
 setInterval(()=>{},1000)
